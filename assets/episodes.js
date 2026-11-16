@@ -9,6 +9,7 @@
 
   const playlist = typeof config.playlistId === "string" ? config.playlistId.trim() : "";
   const validPlaylist = /^(PL|UU|UULF|UULP|OLAK5uy_)[A-Za-z0-9_-]{10,100}$/.test(playlist);
+  const validThumb = thumb => typeof thumb === "string" && /^assets\/ep-[1-9]\.jpg(\?v=[A-Za-z0-9_-]{11})?$/.test(thumb);
   const videos = Array.isArray(config.videos) ? config.videos.filter(video =>
     video && typeof video.id === "string" && /^[A-Za-z0-9_-]{11}$/.test(video.id)
   ).slice(0, 10) : [];
@@ -17,11 +18,24 @@
   function showChoice(entry, slot) {
     const choice = document.createElement("div");
     choice.className = "embed-choice";
-    const notice = document.createElement("p");
-    notice.textContent = "Loading this player connects your browser to YouTube/Google, which may receive device and viewing information and use cookies or similar storage. Or use the direct YouTube link below.";
+
+    const media = document.createElement("div");
+    media.className = "episode-media";
+    if (validThumb(entry.thumb)) {
+      const img = document.createElement("img");
+      img.className = "episode-thumb";
+      img.src = entry.thumb;
+      img.alt = typeof entry.title === "string" && entry.title.trim() ? entry.title : "In the Dome episode thumbnail";
+      img.loading = "lazy";
+      img.decoding = "async";
+      media.append(img);
+    }
+
+    const overlay = document.createElement("div");
+    overlay.className = "episode-overlay";
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "button";
+    button.className = "button episode-play-btn";
     button.textContent = "Load YouTube player";
     button.addEventListener("click", () => {
       const frame = document.createElement("div");
@@ -39,14 +53,10 @@
       removeButton.hidden = false;
       status.textContent = "YouTube player loaded. You can remove loaded players below.";
     });
-    const direct = document.createElement("a");
-    direct.href = entry.playlist
-      ? `https://www.youtube.com/playlist?list=${encodeURIComponent(entry.playlist)}`
-      : `https://www.youtube.com/watch?v=${encodeURIComponent(entry.id)}`;
-    direct.textContent = "Watch directly on YouTube ↗";
-    direct.target = "_blank";
-    direct.rel = "noopener noreferrer";
-    choice.append(notice, button, direct);
+    overlay.append(button);
+    media.append(overlay);
+
+    choice.append(media);
     slot.replaceChildren(choice);
   }
 
@@ -54,14 +64,34 @@
   entries.forEach(entry => {
     const card = document.createElement("article");
     card.className = "episode-card";
+    const slot = document.createElement("div");
+    showChoice(entry, slot);
+
+    const body = document.createElement("div");
+    body.className = "episode-card-body";
     const heading = document.createElement("h3");
     heading.className = "episode-card-title";
     heading.textContent = typeof entry.title === "string" && entry.title.trim()
       ? entry.title : "In the Dome episode";
-    const slot = document.createElement("div");
-    showChoice(entry, slot);
+
+    const meta = document.createElement("div");
+    meta.className = "episode-card-meta";
+    const direct = document.createElement("a");
+    direct.className = "episode-direct-link";
+    direct.href = entry.playlist
+      ? `https://www.youtube.com/playlist?list=${encodeURIComponent(entry.playlist)}`
+      : `https://www.youtube.com/watch?v=${encodeURIComponent(entry.id)}`;
+    direct.textContent = "Watch on YouTube ↗";
+    direct.target = "_blank";
+    direct.rel = "noopener noreferrer";
+    const notice = document.createElement("span");
+    notice.className = "episode-privacy-tag";
+    notice.textContent = "Connects on click";
+    meta.append(direct, notice);
+
+    body.append(heading, meta);
     slots.push({ entry, slot });
-    card.append(heading, slot);
+    card.append(slot, body);
     list.append(card);
   });
   if (slots.length) {
