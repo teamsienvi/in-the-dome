@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101114"><meta name="description" content="Partner with In the Dome — send a sponsorship inquiry directly to Jordan Ellams and Michael Wilson.">
+  <title>Talk Sponsorship | In the Dome</title>
+  <link rel="canonical" href="https://inthedome.ca/sponsor.html">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/analytics.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X21CNC0YM0"></script>
+</head><body>
+<a class="skip-link" href="#content">Skip to content</a><div class="topline" aria-hidden="true"></div>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="index.html" aria-label="In the Dome home"><img src="assets/logo.png" alt="In the Dome — All Killer No Filler Flames Talk" width="300" height="92"></a><nav aria-label="Main navigation"><ul class="nav-links"><li><a href="index.html#show">The show</a></li><li><a href="index.html#episodes">Episodes</a></li><li><a href="index.html#hosts">Hosts</a></li><li><a href="sponsor.html">Sponsorship</a></li></ul></nav><a class="button secondary nav-cta" href="index.html">← Back to home</a></div></header>
+
+<main id="content" class="wrap sponsor-page">
+  <div class="eyebrow">Commercial partnerships</div>
+  <h1>Talk <span class="accent">sponsorship</span></h1>
+  <p class="section-intro">Want to put your brand in front of Calgary hockey fans through host reads, live watch-alongs, or social clips? Fill out the quick form below and your note goes straight to Jordan and Michael.</p>
+
+  <form class="sponsor-form-card" id="sponsor-form" action="/api/sponsor" method="post">
+    <div class="hp-field" aria-hidden="true">
+      <label for="website_hp">Leave this field empty</label>
+      <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label for="sp-name">Your name *</label>
+        <input type="text" id="sp-name" name="name" required maxlength="120" autocomplete="name" placeholder="Jane Doe">
+      </div>
+      <div class="field">
+        <label for="sp-email">Email *</label>
+        <input type="email" id="sp-email" name="email" required maxlength="160" autocomplete="email" placeholder="jane@company.com">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label for="sp-company">Company / brand *</label>
+        <input type="text" id="sp-company" name="company" required maxlength="140" autocomplete="organization" placeholder="Your brand name">
+      </div>
+      <div class="field">
+        <label for="sp-phone">Phone <span class="optional">(optional)</span></label>
+        <input type="tel" id="sp-phone" name="phone" maxlength="40" autocomplete="tel" placeholder="(403) 555-0123">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="sp-message">How would you like to partner? *</label>
+      <textarea id="sp-message" name="message" rows="4" required maxlength="3000" placeholder="Tell us briefly about your brand, campaign goals, or timeline..."></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button class="button" id="sponsor-submit" type="submit">Send inquiry →</button>
+      <span class="direct-note">Or email directly: <a href="mailto:inthedomepod@gmail.com?subject=In%20the%20Dome%20sponsorship%20enquiry">inthedomepod@gmail.com</a></span>
+    </div>
+
+    <p class="form-status" id="sponsor-status" role="status" aria-live="polite"></p>
+  </form>
+</main>
+
+<footer><div class="wrap"><div class="footer-mark">In the Dome Unfiltered</div><nav class="footer-links" aria-label="Website information"><a href="index.html">Home</a><a href="sponsor.html">Sponsorship</a><a href="privacy.html">Privacy &amp; video choices</a><a href="terms.html">Website terms &amp; disclosures</a><a href="mailto:inthedomepod@gmail.com?subject=In%20the%20Dome%20website">Contact</a></nav><p class="footer-disclosure">© 2026 In the Dome. Owned by Jordan Ellams and Michael Wilson. Independent fan commentary; not affiliated with or endorsed by the Calgary Flames or the NHL.</p></div></footer>
+<script src="assets/sponsor.js" defer></script>
+</body></html>

@@ -154,3 +154,23 @@
 
 
     .episode-frame { min-height: 200px; }
+    .sponsor-page { max-width: 720px; padding: 56px 0 74px; }
+    .sponsor-page h1 { margin: 10px 0 12px; font: 900 clamp(40px, 6.2vw, 68px)/.96 var(--display); text-transform: uppercase; }
+    .sponsor-page h1 .accent { color: var(--red); display: inline; }
+    .sponsor-form-card { margin-top: 28px; padding: clamp(22px, 4vw, 34px); border: 1px solid var(--line); border-top: 3px solid var(--red); border-radius: 8px; background: var(--panel); display: grid; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: .03em; }
+    .field .optional { color: var(--muted); font-weight: 400; font-size: 12px; }
+    .field input, .field textarea { width: 100%; padding: 12px 14px; border: 1px solid rgba(255,255,255,.18); border-radius: 5px; background: #101114; color: var(--white); font: inherit; font-size: 15px; transition: border-color .15s ease; }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 2px rgba(241,190,72,.22); }
+    .field textarea { resize: vertical; min-height: 110px; }
+    .form-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-top: 4px; }
+    .direct-note { color: var(--muted); font-size: 13px; }
+    .direct-note a { color: var(--gold); text-decoration: none; font-weight: 700; }
+    .direct-note a:hover { text-decoration: underline; }
+    .form-status { margin: 0; font-size: 14px; min-height: 20px; color: var(--muted); }
+    .form-status.success { padding: 12px 14px; border-radius: 5px; background: rgba(16,185,129,.14); border: 1px solid rgba(16,185,129,.4); color: #a7f3d0; font-weight: 600; }
+    .form-status.error { padding: 12px 14px; border-radius: 5px; background: rgba(200,16,46,.18); border: 1px solid rgba(200,16,46,.5); color: #fecdd3; font-weight: 600; }
+    .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
